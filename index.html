@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akash Paila</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: left;
+            max-width: 600px;
+            margin-left: 100px;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: #8a4af3;
+            white-space: nowrap;
+            display: inline-block;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1 span {
+            color: #8a4af3;
+            display: inline-block;
+            position: relative;
+            text-shadow: 0 0 5px rgba(138, 74, 243, 0.8);
+            animation: glassOut 3s ease-in-out forwards, glassIn 3s ease-in-out forwards;
+        }
+
+        @keyframes glassOut {
+            0% {
+                opacity: 1;
+                filter: blur(1px);
+                transform: scale(1);
+                text-shadow: 0 0 10px rgba(138, 74, 243, 0.8), 0 0 15px rgba(138, 74, 243, 0.5);
+            }
+            50% {
+                opacity: 1;
+                filter: blur(1px);
+                transform: scale(1);
+                text-shadow: 0 0 10px rgba(138, 74, 243, 0.8), 0 0 15px rgba(138, 74, 243, 0.5);
+            }
+            100% {
+                opacity: 0;
+                filter: blur(3px);
+                transform: scale(0.95);
+                text-shadow: 0 0 20px rgba(138, 74, 243, 0.3);
+            }
+        }
+
+        @keyframes glassIn {
+            0% {
+                opacity: 0;
+                filter: blur(3px);
+                transform: scale(0.95);
+                text-shadow: 0 0 20px rgba(138, 74, 243, 0.3);
+            }
+            50% {
+                opacity: 0;
+                filter: blur(3px);
+                transform: scale(0.95);
+                text-shadow: 0 0 20px rgba(138, 74, 243, 0.3);
+            }
+            100% {
+                opacity: 1;
+                filter: blur(1px);
+                transform: scale(1);
+                text-shadow: 0 0 10px rgba(138, 74, 243, 0.8), 0 0 15px rgba(138, 74, 243, 0.5);
+            }
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-top: 10px;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            margin-right: 15px;
+            display: inline-block;
+        }
+
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            filter: invert(50%);
+            transition: filter 0.3s;
+        }
+
+        .social-icons img:hover {
+            filter: invert(100%);
+        }
+
+        .navbar {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            animation: glow 2s infinite alternate;
+            z-index: 1;
+        }
+
+        .navbar a {
+            position: relative;
+        }
+
+        .navbar img {
+            width: 25px;
+            height: 25px;
+            filter: invert(70%);
+            transition: transform 0.3s;
+        }
+
+        .navbar img:hover {
+            transform: scale(1.2);
+        }
+
+        .navbar a::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            right: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(138, 74, 243, 0.9);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-family: 'Lato', sans-serif;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
+        }
+
+        .navbar a:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px #8a4af3, 0 0 10px #8a4af3, 0 0 15px #8a4af3;
+            }
+            100% {
+                box-shadow: 0 0 10px #8a4af3, 0 0 20px #8a4af3, 0 0 30px #8a4af3;
+            }
+        }
+
+        /* New Right-Side Content */
+        .right-content {
+            position: absolute;
+            right: 100px; /* Adjusted to avoid overlapping with navbar */
+            top: 50%;
+            transform: translateY(-50%);
+            max-width: 400px;
+            z-index: 1;
+        }
+
+        .right-content p {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 20px;
+            font-family: 'Lato', sans-serif;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .resume-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(45deg, #8a4af3, #3b82f6);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .resume-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(138, 74, 243, 0.8);
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 3D Space Background */
+        .background-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .stars::before,
+        .stars::after,
+        .stars-layer-2::before,
+        .stars-layer-2::after,
+        .stars-layer-3::before,
+        .stars-layer-3::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 
+                50vw 20vh 2px #fff,
+                30vw 80vh 1px rgba(255, 255, 255, 0.8),
+                70vw 50vh 3px rgba(255, 255, 255, 0.6),
+                20vw 30vh 2px rgba(255, 255, 255, 0.7),
+                80vw 70vh 1px rgba(255, 255, 255, 0.9),
+                40vw 10vh 2px rgba(255, 255, 255, 0.5),
+                60vw 90vh 1px rgba(255, 255, 255, 0.8),
+                10vw 60vh 3px rgba(255, 255, 255, 0.6),
+                90vw 40vh 2px rgba(255, 255, 255, 0.7),
+                25vw 75vh 1px rgba(255, 255, 255, 0.9);
+            animation: moveStars 100s linear infinite;
+        }
+
+        .stars-layer-2::before,
+        .stars-layer-2::after {
+            width: 3px;
+            height: 3px;
+            box-shadow: 
+                45vw 25vh 3px rgba(255, 255, 255, 0.5),
+                35vw 85vh 2px rgba(255, 255, 255, 0.4),
+                65vw 55vh 4px rgba(255, 255, 255, 0.3),
+                15vw 35vh 3px rgba(255, 255, 255, 0.5),
+                85vw 65vh 2px rgba(255, 255, 255, 0.4);
+            animation: moveStars 150s linear infinite;
+        }
+
+        .stars-layer-3::before,
+        .stars-layer-3::after {
+            width: 4px;
+            height: 4px;
+            box-shadow: 
+                55vw 15vh 4px rgba(255, 255, 255, 0.3),
+                25vw 95vh 3px rgba(255, 255, 255, 0.2),
+                75vw 45vh 5px rgba(255, 255, 255, 0.2);
+            animation: moveStars 200s linear infinite;
+        }
+
+        @keyframes moveStars {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-200vh);
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: auto;
+                padding: 20px;
+            }
+
+            .container {
+                margin-left: 0;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+
+            .right-content {
+                position: static;
+                transform: none;
+                text-align: center;
+            }
+
+            .navbar {
+                top: auto;
+                bottom: 20px;
+                right: 50%;
+                transform: translateX(50%);
+                flex-direction: row;
+            }
+
+            .navbar br {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-lines">
+        <div class="stars"></div>
+        <div class="stars stars-layer-2"></div>
+        <div class="stars stars-layer-3"></div>
+    </div>
+
+    <div class="container">
+        <h1>Akash Paila | <span id="role">Developer</span></h1>
+        <p>
+           Aspiring Machine Learning Engineer blending code, creativity, and curiosity. Passionate about AI & Data Science, exploring the depths of Cybersecurity, and crafting seamless web experiences as a Data Analyst and Full-Stack Developer.
+        </p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/akash-paila-/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn"></a>
+            <a href="https://github.com/Akashpaila"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub"></a>
+            <a href="https://discord.gg/uRc7KTKF"><img src="discord.png" alt="Discord"></a>
+            <a href="mailto:akashpyla@gmail.com"><img src="email.png" alt="Email"></a>
+        </div>
+    </div>
+
+    <div class="right-content">
+        <p>
+            Want to know more about my skills and experience? Download my resume to get a detailed overview of my journey!
+        </p>
+        <a href="Akash_CV.pdf" download class="resume-button">Download Resume</a>
+    </div>
+
+    <div class="navbar">
+        <a href="index.html" data-tooltip="Home"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home"></a>
+        <br> 
+        <a href="profile.html" data-tooltip="Profile"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="Profile"></a>
+        <br>
+        <a href="experience.html" data-tooltip="Experience"><img src="suitcase.png" alt="Experience"></a>
+        <br>
+        <a href="projects.html" data-tooltip="Projects"><img src="https://cdn-icons-png.flaticon.com/512/1055/1055666.png" alt="Projects"></a>
+        <br>
+        <a href="Certifications.html" data-tooltip="Certificates"><img src="winner.png" alt="Certificates"></a>
+        <br>
+        <a href="contact.html" data-tooltip="Contact"><img src="https://cdn-icons-png.flaticon.com/512/561/561188.png" alt="Contact"></a>
+    </div>
+
+    <script>
+        const roles = ["Web Developer", "Freelancer", "Problem Solver", "ML Enthusiast", "Data Analyst"];
+        let currentRoleIndex = 0;
+        const roleElement = document.getElementById("role");
+
+        function changeRole() {
+            roleElement.style.animation = 'none';
+            roleElement.offsetHeight;
+            roleElement.style.animation = 'glassOut 3s ease-in-out forwards, glassIn 3s ease-in-out forwards';
+
+            roleElement.textContent = roles[currentRoleIndex];
+            currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+        }
+
+        setInterval(changeRole, 3000);
+        changeRole();
+    </script>
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience | Akash Paila</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            color: #fff;
+            height: 100vh;
+            overflow: auto;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px;
+            padding-right: 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: #fff;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            color: #888;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .timeline {
+            position: relative;
+            margin-top: 40px;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #8a4af3, #3b82f6);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px;
+            box-sizing: border-box;
+            animation: slideIn 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: left;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 40px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 40px;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.6s; }
+
+        .timeline-marker {
+            position: absolute;
+            top: 30px;
+            width: 16px;
+            height: 16px;
+            background: #8a4af3;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(138, 74, 243, 0.5);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-marker {
+            right: -8px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-marker {
+            left: -8px;
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(138, 74, 243, 0.8);
+        }
+
+        .timeline-content img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .timeline-content .date {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content p {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .timeline-item:nth-child(even) {
+            animation: slideInRight 0.8s ease forwards;
+        }
+
+        @keyframes slideInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .navbar {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            animation: glow 2s infinite alternate;
+            z-index: 2;
+        }
+
+        .navbar a {
+            position: relative;
+        }
+
+        .navbar img {
+            width: 25px;
+            height: 25px;
+            filter: invert(70%);
+            transition: transform 0.3s;
+        }
+
+        .navbar img:hover {
+            transform: scale(1.2);
+        }
+
+        .navbar a::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            right: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(138, 74, 243, 0.9);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
+        }
+
+        .navbar a:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px #8a4af3, 0 0 10px #8a4af3, 0 0 15px #8a4af3;
+            }
+            100% {
+                box-shadow: 0 0 10px #8a4af3, 0 0 20px #8a4af3, 0 0 30px #8a4af3;
+            }
+        }
+
+        /* 3D Space Background */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .stars::before,
+        .stars::after,
+        .stars-layer-2::before,
+        .stars-layer-2::after,
+        .stars-layer-3::before,
+        .stars-layer-3::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 
+                50vw 20vh 2px #fff,
+                30vw 80vh 1px rgba(255, 255, 255, 0.8),
+                70vw 50vh 3px rgba(255, 255, 255, 0.6),
+                20vw 30vh 2px rgba(255, 255, 255, 0.7),
+                80vw 70vh 1px rgba(255, 255, 255, 0.9),
+                40vw 10vh 2px rgba(255, 255, 255, 0.5),
+                60vw 90vh 1px rgba(255, 255, 255, 0.8),
+                10vw 60vh 3px rgba(255, 255, 255, 0.6),
+                90vw 40vh 2px rgba(255, 255, 255, 0.7),
+                25vw 75vh 1px rgba(255, 255, 255, 0.9);
+            animation: moveStars 100s linear infinite;
+        }
+
+        .stars-layer-2::before,
+        .stars-layer-2::after {
+            width: 3px;
+            height: 3px;
+            box-shadow: 
+                45vw 25vh 3px rgba(255, 255, 255, 0.5),
+                35vw 85vh 2px rgba(255, 255, 255, 0.4),
+                65vw 55vh 4px rgba(255, 255, 255, 0.3),
+                15vw 35vh 3px rgba(255, 2255, 255, 0.5),
+                85vw 65vh 2px rgba(255, 255, 255, 0.4);
+            animation: moveStars 150s linear infinite;
+        }
+
+        .stars-layer-3::before,
+        .stars-layer-3::after {
+            width: 4px;
+            height: 4px;
+            box-shadow: 
+                55vw 15vh 4px rgba(255, 255, 255, 0.3),
+                25vw 95vh 3px rgba(255, 255, 255, 0.2),
+                75vw 45vh 5px rgba(255, 255, 255, 0.2);
+            animation: moveStars 200s linear infinite;
+        }
+
+        @keyframes moveStars {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-200vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="stars"></div>
+        <div class="stars stars-layer-2"></div>
+        <div class="stars stars-layer-3"></div>
+    </div>
+
+    <div class="container">
+        <div class="overview">
+            <h2>What i have done so far</h2>
+            <h1>Work Experience</h1>
+            <p>
+                Here’s a summary of my professional journey, highlighting my roles and contributions in various organizations. Each experience has helped me grow my skills in technology, problem-solving, and collaboration. Explore my work history below!
+            </p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="date">Jul 2023 - Jun 2024</div>
+                    <img src="download.png" alt="IIIT Raichur Logo">
+                    <h3>Website Team Member</h3>
+                    <p>Collaborated closely with a dedicated team of 10 members to develop and maintain the website, contributing significantly to its success and functionality
+                    </p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="date">Jun 2022 - June 2023</div>
+                    <img src="download (1).png" alt="GDSC">
+                    <h3>Cloud Computing (GDSC Core Member) </h3>
+                    <p>Organized workshops and events to promote cloud computing technologies, engaging over 100 students in hands-on sessions using Google Cloud Platform.</p>
+                </div>
+            </div>
+            <!-- <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="date">Jun 2023 - Aug 2023</div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="TechCorp">
+                    <h3>Software Engineer Intern</h3>
+                    <p>TechCorp<br>Developed web applications using React and Node.js, improving user experience and reducing load times by 20%.</p>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="navbar">
+        <a href="index.html" data-tooltip="Home"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home"></a>
+        <br> 
+        <a href="profile.html" data-tooltip="Profile"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="Profile"></a>
+        <br>
+        <a href="experience.html" data-tooltip="Experience"><img src="suitcase.png" alt="Experience"></a>
+        <br>
+        <a href="projects.html" data-tooltip="Projects"><img src="https://cdn-icons-png.flaticon.com/512/1055/1055666.png" alt="Projects"></a>
+        <br>
+        <a href="Certifications.html" data-tooltip="Certificates"><img src="winner.png" alt="Certificates"></a>
+        <br>
+        <a href="contact.html" data-tooltip="Contact"><img src="https://cdn-icons-png.flaticon.com/512/561/561188.png" alt="Contact"></a>
+    </div>
+</body>
+</html>
