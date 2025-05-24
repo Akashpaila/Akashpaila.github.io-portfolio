@@ -15,8 +15,9 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh; /* Changed to min-height to allow scrolling */
+            overflow-x: hidden; /* Prevent horizontal overflow */
+            overflow-y: auto; /* Allow vertical scrolling */
         }
 
         .container {
@@ -24,6 +25,7 @@
             max-width: 600px;
             margin-left: 100px;
             z-index: 1;
+            padding: 20px; /* Added padding for better spacing */
         }
 
         h1 {
@@ -172,10 +174,10 @@
             }
         }
 
-        /* New Right-Side Content */
+        /* Right-Side Content */
         .right-content {
             position: absolute;
-            right: 100px; /* Adjusted to avoid overlapping with navbar */
+            right: 100px;
             top: 50%;
             transform: translateY(-50%);
             max-width: 400px;
@@ -303,32 +305,126 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+                min-height: 100vh;
                 height: auto;
-                padding: 20px;
+                padding: 20px 10px; /* Reduced side padding for smaller screens */
             }
 
             .container {
                 margin-left: 0;
                 margin-bottom: 40px;
                 text-align: center;
+                max-width: 100%; /* Ensure it doesn't exceed screen width */
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2rem; /* Reduced font size for mobile */
+                white-space: normal; /* Allow wrapping if needed */
+            }
+
+            p {
+                font-size: 0.9rem; /* Slightly smaller text for better readability */
+            }
+
+            .social-icons img {
+                width: 35px; /* Slightly larger for easier tapping */
+                height: 35px;
             }
 
             .right-content {
                 position: static;
                 transform: none;
                 text-align: center;
+                max-width: 100%;
+                padding: 15px;
+            }
+
+            .right-content p {
+                font-size: 1rem; /* Adjusted for mobile */
+            }
+
+            .resume-button {
+                padding: 10px 20px; /* Slightly smaller padding for mobile */
+                font-size: 0.9rem;
             }
 
             .navbar {
                 top: auto;
-                bottom: 20px;
+                bottom: 10px;
                 right: 50%;
                 transform: translateX(50%);
                 flex-direction: row;
+                gap: 20px; /* Increased gap for better touch spacing */
+                padding: 10px 15px;
+            }
+
+            .navbar img {
+                width: 30px; /* Larger icons for easier tapping */
+                height: 30px;
+            }
+
+            .navbar a::before {
+                display: none; /* Hide tooltips on mobile (hover doesn't work) */
             }
 
             .navbar br {
                 display: none;
+            }
+
+            /* Ensure background stars don't distort */
+            .stars::before,
+            .stars::after,
+            .stars-layer-2::before,
+            .stars-layer-2::after,
+            .stars-layer-3::before,
+            .stars-layer-3::after {
+                box-shadow: 
+                    50vw 20vh 2px #fff,
+                    30vw 80vh 1px rgba(255, 255, 255, 0.8),
+                    70vw 50vh 3px rgba(255, 255, 255, 0.6),
+                    20vw 30vh 2px rgba(255, 255, 255, 0.7),
+                    80vw 70vh 1px rgba(255, 255, 255, 0.9),
+                    40vw 10vh 2px rgba(255, 255, 255, 0.5),
+                    60vw 90vh 1px rgba(255, 255, 255, 0.8),
+                    10vw 60vh 3px rgba(255, 255, 255, 0.6),
+                    90vw 40vh 2px rgba(255, 255, 255, 0.7),
+                    25vw 75vh 1px rgba(255, 255, 255, 0.9);
+            }
+        }
+
+        /* Additional breakpoint for very small screens (e.g., 480px and below) */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem; /* Further reduced for very small screens */
+            }
+
+            p {
+                font-size: 0.85rem;
+            }
+
+            .social-icons img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .right-content p {
+                font-size: 0.9rem;
+            }
+
+            .resume-button {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+
+            .navbar {
+                gap: 15px;
+                padding: 8px 12px;
+            }
+
+            .navbar img {
+                width: 25px;
+                height: 25px;
             }
         }
     </style>
@@ -369,7 +465,7 @@
         <br>
         <a href="projects.html" data-tooltip="Projects"><img src="https://cdn-icons-png.flaticon.com/512/1055/1055666.png" alt="Projects"></a>
         <br>
-        <a href="Certifications.html" data-tooltip="Certificates"><img src="winner.png" alt="Certificates"></a>
+        <a href="certifications.html" data-tooltip="Certificates"><img src="winner.png" alt="Certificates"></a>
         <br>
         <a href="contact.html" data-tooltip="Contact"><img src="https://cdn-icons-png.flaticon.com/512/561/561188.png" alt="Contact"></a>
     </div>
