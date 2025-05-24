@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Akash Paila</title>
+    <title>Tech Stack | Akash Paila</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
@@ -12,9 +12,9 @@
             font-family: 'Poppins', sans-serif;
             background-color: #000;
             color: #fff;
-            min-height: 100vh; /* Changed to min-height to allow scrolling */
-            overflow-x: hidden; /* Prevent horizontal overflow */
-            overflow-y: auto; /* Allow vertical scrolling */
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         .container {
@@ -45,20 +45,21 @@
             line-height: 1.6;
         }
 
-        .projects {
+        .tech-stack {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin-top: 40px;
         }
 
-        .project-card {
+        .tech-badge {
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 35px;
-            text-align: center;
-            width: 250px;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -68,20 +69,20 @@
             overflow: hidden;
         }
 
-        .project-card:hover {
-            transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.05);
-            box-shadow: 0 15px 40px rgba(138, 74, 243, 0.9);
+        .tech-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(138, 74, 243, 0.6);
             background: rgba(255, 255, 255, 0.15);
         }
 
-        .project-card::before {
+        .tech-badge::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border-radius: 10px;
+            border-radius: 5px;
             background: linear-gradient(45deg, #8a4af3, #3b82f6, #8a4af3);
             background-size: 200%;
             opacity: 0;
@@ -89,7 +90,7 @@
             z-index: -1;
         }
 
-        .project-card:hover::before {
+        .tech-badge:hover::before {
             opacity: 1;
             animation: shimmer 2s infinite;
         }
@@ -101,59 +102,6 @@
             100% {
                 background-position: 200% 50%;
             }
-        }
-
-        .project-card img {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 15px;
-        }
-
-        .project-card h3 {
-            margin: 0;
-            font-size: 1.2rem;
-            color: #fff;
-            font-weight: 600;
-        }
-
-        .project-card p {
-            margin: 5px 0 0;
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-
-        .project-card .demo-link {
-            margin-top: 15px;
-            display: inline-block;
-        }
-
-        .project-card .demo-link img {
-            width: 20px;
-            height: 20px;
-            filter: invert(80%) sepia(50%) saturate(500%) hue-rotate(200deg);
-            transition: transform 0.3s ease;
-        }
-
-        .project-card .demo-link img:hover {
-            transform: scale(1.2);
-        }
-
-        .project-card .github-link {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            z-index: 2;
-        }
-
-        .project-card .github-link img {
-            width: 18px;
-            height: 18px;
-            filter: invert(80%) sepia(50%) saturate(500%) hue-rotate(200deg);
-            transition: transform 0.3s ease;
-        }
-
-        .project-card .github-link img:hover {
-            transform: scale(1.2);
         }
 
         @keyframes fadeInScale {
@@ -308,22 +256,69 @@
             }
         }
 
+        /* Tech-specific background colors */
+        .tech-badge.android { background-color: #3DDC84; }
+        .tech-badge.arduino { background-color: #00979D; }
+        .tech-badge.bash { background-color: #4EAA25; }
+        .tech-badge.bootstrap { background-color: #7952B3; }
+        .tech-badge.c { background-color: #A8B9CC; }
+        .tech-badge.canvasjs { background-color: #FF5733; }
+        .tech-badge.chartjs { background-color: #FF6384; }
+        .tech-badge.cplusplus { background-color: #00599C; }
+        .tech-badge.css3 { background-color: #1572B6; }
+        .tech-badge.dart { background-color: #0175C2; }
+        .tech-badge.django { background-color: #092E20; }
+        .tech-badge.firebase { background-color: #FFCA28; }
+        .tech-badge.flask { background-color: #000000; }
+        .tech-badge.flutter { background-color: #02569B; }
+        .tech-badge.gcp { background-color: #4285F4; }
+        .tech-badge.git { background-color: #F05032; }
+        .tech-badge.html5 { background-color: #E34F26; }
+        .tech-badge.java { background-color: #007396; }
+        .tech-badge.javascript { background-color: #F7DF1E; }
+        .tech-badge.jekyll { background-color: #CC0000; }
+        .tech-badge.kotlin { background-color: #7F52FF; }
+        .tech-badge.linux { background-color: #FCC624; }
+        .tech-badge.matlab { background-color: #0076A8; }
+        .tech-badge.mongodb { background-color: #47A248; }
+        .tech-badge.mysql { background-color: #4479A1; }
+        .tech-badge.nodejs { background-color: #339933; }
+        .tech-badge.opencv { background-color: #5C3EE8; }
+        .tech-badge.pandas { background-color: #150458; }
+        .tech-badge.php { background-color: #777BB4; }
+        .tech-badge.postman { background-color: #FF6C37; }
+        .tech-badge.python { background-color: #3776AB; }
+        .tech-badge.pytorch { background-color: #EE4C2C; }
+        .tech-badge.react { background-color: #61DAFB; }
+        .tech-badge.react-native { background-color: #61DAFB; }
+        .tech-badge.ruby { background-color: #CC342D; }
+        .tech-badge.sass { background-color: #CC6699; }
+        .tech-badge.scikit-learn { background-color: #F7931E; }
+        .tech-badge.seaborn { background-color: #0A8EA0; }
+        .tech-badge.selenium { background-color: #43B02A; }
+        .tech-badge.sqlite { background-color: #003B57; }
+        .tech-badge.tailwind { background-color: #06B6D4; }
+        .tech-badge.tensorflow { background-color: #FF6F00; }
+        .tech-badge.unity { background-color: #000000; }
+        .tech-badge.unreal { background-color: #313131; }
+        .tech-badge.vuetify { background-color: #1867C0; }
+
         /* Responsive Adjustments */
         @media (max-width: 768px) {
             body {
                 min-height: 100vh;
                 height: auto;
-                padding: 20px 10px; /* Reduced padding for mobile */
+                padding: 20px 10px;
             }
 
             .container {
                 max-width: 100%;
                 padding: 20px;
-                padding-right: 20px; /* Adjusted padding */
+                padding-right: 20px;
             }
 
             h1 {
-                font-size: 2rem; /* Reduced font size for mobile */
+                font-size: 2rem;
             }
 
             h2 {
@@ -331,54 +326,32 @@
             }
 
             p {
-                font-size: 0.9rem; /* Adjusted for better readability */
+                font-size: 0.9rem;
             }
 
-            .projects {
-                flex-direction: column; /* Stack project cards vertically */
+            .tech-stack {
+                flex-direction: column;
                 align-items: center;
-                gap: 15px;
+                gap: 10px;
                 margin-top: 20px;
             }
 
-            .project-card {
-                width: 80%; /* Take up more width on mobile */
-                max-width: 300px; /* Cap the width */
-                padding: 25px;
+            .tech-badge {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+                width: 80%;
+                max-width: 200px;
+                text-align: center;
             }
 
-            .project-card:hover {
-                transform: none; /* Disable hover effects on mobile */
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Revert to default shadow */
-                background: rgba(255, 255, 255, 0.1); /* Revert background */
+            .tech-badge:hover {
+                transform: none;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                background: rgba(255, 255, 255, 0.1);
             }
 
-            .project-card::before {
-                display: none; /* Disable shimmer effect on mobile */
-            }
-
-            .project-card img {
-                width: 60px; /* Slightly smaller images */
-                height: 60px;
-            }
-
-            .project-card h3 {
-                font-size: 1.1rem;
-            }
-
-            .project-card p {
-                font-size: 0.85rem;
-            }
-
-            .project-card .github-link img,
-            .project-card .demo-link img {
-                width: 16px;
-                height: 16px;
-            }
-
-            .project-card .github-link img:hover,
-            .project-card .demo-link img:hover {
-                transform: none; /* Disable hover effect on mobile */
+            .tech-badge::before {
+                display: none;
             }
 
             .navbar {
@@ -387,17 +360,17 @@
                 right: 50%;
                 transform: translateX(50%);
                 flex-direction: row;
-                gap: 20px; /* Increased gap for touch spacing */
+                gap: 20px;
                 padding: 10px 15px;
             }
 
             .navbar img {
-                width: 30px; /* Larger icons for easier tapping */
+                width: 30px;
                 height: 30px;
             }
 
             .navbar a::before {
-                display: none; /* Hide tooltips on mobile */
+                display: none;
             }
 
             .navbar br {
@@ -405,14 +378,13 @@
             }
 
             .navbar img:hover {
-                transform: none; /* Disable hover effect on mobile */
+                transform: none;
             }
         }
 
-        /* Additional breakpoint for very small screens (e.g., 480px and below) */
         @media (max-width: 480px) {
             h1 {
-                font-size: 1.5rem; /* Further reduced for very small screens */
+                font-size: 1.5rem;
             }
 
             h2 {
@@ -423,28 +395,11 @@
                 font-size: 0.85rem;
             }
 
-            .project-card {
+            .tech-badge {
+                padding: 6px 12px;
+                font-size: 0.85rem;
                 width: 90%;
-                padding: 20px;
-            }
-
-            .project-card img {
-                width: 50px;
-                height: 50px;
-            }
-
-            .project-card h3 {
-                font-size: 1rem;
-            }
-
-            .project-card p {
-                font-size: 0.8rem;
-            }
-
-            .project-card .github-link img,
-            .project-card .demo-link img {
-                width: 14px;
-                height: 14px;
+                max-width: 180px;
             }
 
             .navbar {
@@ -468,47 +423,59 @@
 
     <div class="container">
         <div class="overview">
-            <h2>My Work</h2>
-            <h1>Projects</h1>
+            <h2>TECH STACK</h2>
+            <h1>My Skills</h1>
             <p>
-                Here are some of the projects I've worked on, showcasing my skills in web development, machine learning, and data analysis. Each project reflects my passion for solving real-world problems through technology and innovation. Feel free to explore them!
+                Here’s a collection of the technologies, languages, and tools I’m proficient in. I’m always eager to learn more and expand my skill set to tackle new challenges in AI/ML, web development, and beyond.
             </p>
         </div>
 
-        <div class="projects">
-            <div class="project-card">
-                <a href="https://github.com/Akashpaila/Language-Tutor" class="github-link">
-                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Link">
-                </a>
-                <img src="tutor.png" alt="Chatbot Project">
-                <h3>Language Tutor</h3>
-                <p>An AI Based system for Pronunciation Assessment and Tracking of Speech Fluency Variations using the custom models which gained 50% more accuracy than the existing models like Google Web Speech API, Vosk, Whisper</p>
-            </div>
-
-            <div class="project-card">
-                <a href="https://github.com/Akashpaila/Face-Recognition-Based-Attendance-System-" class="github-link">
-                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Link">
-                </a>
-                <img src="face.gif" alt="E-commerce Website">
-                <h3>Face Recognition Based Attendance System</h3>
-                <p>I have created a face recognition based attendance system where the attendance will be marked if the face is recognized from the webcam or from the uploaded photo. And then the attendance will be the marked if the face gets recognized for the ceratin amount of time</p>
-            </div>
-            <div class="project-card">
-                <a href="https://github.com/Akashpaila/Hospital-management-System" class="github-link">
-                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Link">
-                </a>
-                <img src="doctors-office.gif" alt="Data Visualization">
-                <h3>Hospital Management System</h3>
-                <p>Created a centralized web app where the users can book and appointement as per the disease and the doctor can accept the appointment if he is having the free slot. And the ADMIN can add the doctors if any new doctor is appointed</p>
-            </div>
-            <div class="project-card">
-                <a href="https://github.com/Akashpaila/portfolio-website" class="github-link">
-                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Link">
-                </a>
-                <img src="resume.gif" alt="Portfolio Website">
-                <h3>Portfolio Website</h3>
-                <p>This website! Built with HTML, CSS, and JavaScript to showcase my skills and projects.</p>
-            </div>
+        <div class="tech-stack">
+            <div class="tech-badge android">Android</div>
+            <div class="tech-badge arduino">Arduino</div>
+            <div class="tech-badge bash">Bash</div>
+            <div class="tech-badge bootstrap">Bootstrap</div>
+            <div class="tech-badge c">C</div>
+            <div class="tech-badge canvasjs">CanvasJS</div>
+            <div class="tech-badge chartjs">ChartJS</div>
+            <div class="tech-badge cplusplus">C++</div>
+            <div class="tech-badge css3">CSS3</div>
+            <div class="tech-badge dart">Dart</div>
+            <div class="tech-badge django">Django</div>
+            <div class="tech-badge firebase">Firebase</div>
+            <div class="tech-badge flask">Flask</div>
+            <div class="tech-badge flutter">Flutter</div>
+            <div class="tech-badge gcp">GCP</div>
+            <div class="tech-badge git">Git</div>
+            <div class="tech-badge html5">HTML5</div>
+            <div class="tech-badge java">Java</div>
+            <div class="tech-badge javascript">JavaScript</div>
+            <div class="tech-badge jekyll">Jekyll</div>
+            <div class="tech-badge kotlin">Kotlin</div>
+            <div class="tech-badge linux">Linux</div>
+            <div class="tech-badge matlab">MATLAB</div>
+            <div class="tech-badge mongodb">MongoDB</div>
+            <div class="tech-badge mysql">MySQL</div>
+            <div class="tech-badge nodejs">Node.js</div>
+            <div class="tech-badge opencv">OpenCV</div>
+            <div class="tech-badge pandas">Pandas</div>
+            <div class="tech-badge php">PHP</div>
+            <div class="tech-badge postman">Postman</div>
+            <div class="tech-badge python">Python</div>
+            <div class="tech-badge pytorch">PyTorch</div>
+            <div class="tech-badge react">React</div>
+            <div class="tech-badge react-native">React Native</div>
+            <div class="tech-badge ruby">Ruby</div>
+            <div class="tech-badge sass">Sass</div>
+            <div class="tech-badge scikit-learn">Scikit-learn</div>
+            <div class="tech-badge seaborn">Seaborn</div>
+            <div class="tech-badge selenium">Selenium</div>
+            <div class="tech-badge sqlite">SQLite</div>
+            <div class="tech-badge tailwind">Tailwind CSS</div>
+            <div class="tech-badge tensorflow">TensorFlow</div>
+            <div class="tech-badge unity">Unity</div>
+            <div class="tech-badge unreal">Unreal Engine</div>
+            <div class="tech-badge vuetify">Vuetify</div>
         </div>
     </div>
 
@@ -523,9 +490,10 @@
         <br>
         <a href="projects.html" data-tooltip="Projects"><img src="https://cdn-icons-png.flaticon.com/512/1055/1055666.png" alt="Projects"></a>
         <br>
-        <a href="Certifications.html" data-tooltip="Certificates"><img src="winner.png" alt="Certificates"></a>
+        <a href="certifications.html" data-tooltip="Certificates"><img src="winner.png" alt="Certificates"></a>
         <br>
         <a href="contact.html" data-tooltip="Contact"><img src="https://cdn-icons-png.flaticon.com/512/561/561188.png" alt="Contact"></a>
+        <br>
     </div>
 </body>
 </html>
