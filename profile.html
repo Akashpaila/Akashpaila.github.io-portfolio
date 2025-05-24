@@ -12,8 +12,9 @@
             font-family: 'Poppins', sans-serif;
             background-color: #000;
             color: #fff;
-            height: 100vh;
-            overflow: auto;
+            min-height: 100vh; /* Changed to min-height to allow scrolling */
+            overflow-x: hidden; /* Prevent horizontal overflow */
+            overflow-y: auto; /* Allow vertical scrolling */
         }
 
         .container {
@@ -54,35 +55,34 @@
         .role-card {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            padding: 30px; /* Increased padding */
+            padding: 30px;
             text-align: center;
-            width: 200px; /* Increased width */
+            width: 200px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; /* Added background transition */
-            animation: fadeInScale 0.6s ease forwards; /* Added load animation */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            animation: fadeInScale 0.6s ease forwards;
         }
 
         .role-card:hover {
-            transform: scale(1.1) rotate(2deg); /* Enhanced hover with scale and slight rotation */
-            box-shadow: 0 10px 30px rgba(138, 74, 243, 0.8); /* Enhanced glowing shadow */
-            background: rgba(255, 255, 255, 0.2); /* Subtle background change on hover */
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0 10px 30px rgba(138, 74, 243, 0.8);
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .role-card img {
-            width: 80px; /* Increased image size */
+            width: 80px;
             height: 80px;
-            margin-bottom: 15px; /* Adjusted margin */
+            margin-bottom: 15px;
         }
 
         .role-card p {
             margin: 0;
-            font-size: 1.1rem; /* Slightly larger text */
+            font-size: 1.1rem;
             color: #fff;
         }
 
-        /* Fade-in and scale-up animation for cards */
         @keyframes fadeInScale {
             0% {
                 opacity: 0;
@@ -329,7 +329,7 @@
                 45vw 25vh 3px rgba(255, 255, 255, 0.5),
                 35vw 85vh 2px rgba(255, 255, 255, 0.4),
                 65vw 55vh 4px rgba(255, 255, 255, 0.3),
-                15vw 35vh 3px rgba(255, 2255, 255, 0.5),
+                15vw 35vh 3px rgba(255, 255, 255, 0.5),
                 85vw 65vh 2px rgba(255, 255, 255, 0.4);
             animation: moveStars 150s linear infinite;
         }
@@ -351,6 +351,200 @@
             }
             100% {
                 transform: translateY(-200vh);
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            body {
+                min-height: 100vh;
+                height: auto;
+                padding: 20px 10px; /* Reduced padding for mobile */
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 20px;
+                padding-right: 20px; /* Adjusted padding */
+            }
+
+            h1 {
+                font-size: 2rem; /* Reduced font size for mobile */
+            }
+
+            h2 {
+                font-size: 1rem;
+            }
+
+            p {
+                font-size: 0.9rem; /* Adjusted for better readability */
+            }
+
+            .roles {
+                flex-direction: column; /* Stack role cards vertically */
+                align-items: center;
+                gap: 15px;
+            }
+
+            .role-card {
+                width: 80%; /* Take up more width on mobile */
+                max-width: 300px; /* Cap the width */
+                padding: 20px;
+            }
+
+            .role-card img {
+                width: 60px; /* Slightly smaller images */
+                height: 60px;
+            }
+
+            .role-card p {
+                font-size: 1rem;
+            }
+
+            .role-card:hover {
+                transform: none; /* Disable hover effects on mobile */
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Revert to default shadow */
+                background: rgba(255, 255, 255, 0.1); /* Revert background */
+            }
+
+            .education {
+                margin-top: 40px;
+            }
+
+            .timeline::before {
+                left: 20px; /* Move timeline line to the left */
+                transform: none;
+            }
+
+            .timeline-item {
+                margin-bottom: 80px;
+                height: auto; /* Allow height to adjust based on content */
+            }
+
+            .timeline-item .content {
+                position: static; /* Remove absolute positioning */
+                width: 100%; /* Full width */
+                margin-left: 40px; /* Space for the timeline line */
+                flex-direction: row;
+            }
+
+            .timeline-item .date {
+                position: static; /* Remove absolute positioning */
+                margin-bottom: 10px; /* Space below the date */
+                transform: none;
+                display: inline-block;
+            }
+
+            .timeline-item .circle {
+                left: 20px; /* Align with the timeline line */
+                transform: translate(-50%, 0); /* Adjust for top positioning */
+                top: 0;
+            }
+
+            /* Reset positioning for all timeline items */
+            .timeline-item:nth-child(1) .content,
+            .timeline-item:nth-child(2) .content,
+            .timeline-item:nth-child(3) .content {
+                left: 0;
+                right: auto;
+            }
+
+            .timeline-item:nth-child(1) .date,
+            .timeline-item:nth-child(2) .date,
+            .timeline-item:nth-child(3) .date {
+                left: auto;
+                right: auto;
+            }
+
+            .navbar {
+                top: auto;
+                bottom: 10px;
+                right: 50%;
+                transform: translateX(50%);
+                flex-direction: row;
+                gap: 20px; /* Increased gap for touch spacing */
+                padding: 10px 15px;
+            }
+
+            .navbar img {
+                width: 30px; /* Larger icons for easier tapping */
+                height: 30px;
+            }
+
+            .navbar a::before {
+                display: none; /* Hide tooltips on mobile */
+            }
+
+            .navbar br {
+                display: none;
+            }
+
+            .navbar img:hover {
+                transform: none; /* Disable hover effect on mobile */
+            }
+
+            .footer {
+                position: static; /* Prevent overlap with content */
+                text-align: center;
+                margin-top: 20px;
+                padding: 10px;
+            }
+        }
+
+        /* Additional breakpoint for very small screens (e.g., 480px and below) */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem; /* Further reduced for very small screens */
+            }
+
+            h2 {
+                font-size: 0.9rem;
+            }
+
+            p {
+                font-size: 0.85rem;
+            }
+
+            .role-card {
+                width: 90%;
+                padding: 15px;
+            }
+
+            .role-card img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .role-card p {
+                font-size: 0.9rem;
+            }
+
+            .timeline-item .content {
+                padding: 15px;
+            }
+
+            .timeline-item .content img {
+                width: 30px;
+                height: 30px;
+                margin-right: 15px;
+            }
+
+            .timeline-item .content .details h3 {
+                font-size: 1rem;
+            }
+
+            .timeline-item .content .details p {
+                font-size: 0.8rem;
+            }
+
+            .navbar {
+                gap: 15px;
+                padding: 8px 12px;
+            }
+
+            .navbar img {
+                width: 25px;
+                height: 25px;
             }
         }
     </style>
@@ -441,7 +635,7 @@
         <br>
         <a href="projects.html" data-tooltip="Projects"><img src="https://cdn-icons-png.flaticon.com/512/1055/1055666.png" alt="Projects"></a>
         <br>
-        <a href="Certifications.html" data-tooltip="Certificates"><img src="winner.png" alt="Certificates"></a>
+        <a href="certifications.html" data-tooltip="Certificates"><img src="winner.png" alt="Certificates"></a>
         <br>
         <a href="contact.html" data-tooltip="Contact"><img src="https://cdn-icons-png.flaticon.com/512/561/561188.png" alt="Contact"></a>
     </div>

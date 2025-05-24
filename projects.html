@@ -12,8 +12,9 @@
             font-family: 'Poppins', sans-serif;
             background-color: #000;
             color: #fff;
-            height: 100vh;
-            overflow: auto;
+            min-height: 100vh; /* Changed to min-height to allow scrolling */
+            overflow-x: hidden; /* Prevent horizontal overflow */
+            overflow-y: auto; /* Allow vertical scrolling */
         }
 
         .container {
@@ -282,7 +283,7 @@
                 45vw 25vh 3px rgba(255, 255, 255, 0.5),
                 35vw 85vh 2px rgba(255, 255, 255, 0.4),
                 65vw 55vh 4px rgba(255, 255, 255, 0.3),
-                15vw 35vh 3px rgba(255, 2255, 255, 0.5),
+                15vw 35vh 3px rgba(255, 255, 255, 0.5),
                 85vw 65vh 2px rgba(255, 255, 255, 0.4);
             animation: moveStars 150s linear infinite;
         }
@@ -304,6 +305,156 @@
             }
             100% {
                 transform: translateY(-200vh);
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            body {
+                min-height: 100vh;
+                height: auto;
+                padding: 20px 10px; /* Reduced padding for mobile */
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 20px;
+                padding-right: 20px; /* Adjusted padding */
+            }
+
+            h1 {
+                font-size: 2rem; /* Reduced font size for mobile */
+            }
+
+            h2 {
+                font-size: 1rem;
+            }
+
+            p {
+                font-size: 0.9rem; /* Adjusted for better readability */
+            }
+
+            .projects {
+                flex-direction: column; /* Stack project cards vertically */
+                align-items: center;
+                gap: 15px;
+                margin-top: 20px;
+            }
+
+            .project-card {
+                width: 80%; /* Take up more width on mobile */
+                max-width: 300px; /* Cap the width */
+                padding: 25px;
+            }
+
+            .project-card:hover {
+                transform: none; /* Disable hover effects on mobile */
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Revert to default shadow */
+                background: rgba(255, 255, 255, 0.1); /* Revert background */
+            }
+
+            .project-card::before {
+                display: none; /* Disable shimmer effect on mobile */
+            }
+
+            .project-card img {
+                width: 60px; /* Slightly smaller images */
+                height: 60px;
+            }
+
+            .project-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .project-card p {
+                font-size: 0.85rem;
+            }
+
+            .project-card .github-link img,
+            .project-card .demo-link img {
+                width: 16px;
+                height: 16px;
+            }
+
+            .project-card .github-link img:hover,
+            .project-card .demo-link img:hover {
+                transform: none; /* Disable hover effect on mobile */
+            }
+
+            .navbar {
+                top: auto;
+                bottom: 10px;
+                right: 50%;
+                transform: translateX(50%);
+                flex-direction: row;
+                gap: 20px; /* Increased gap for touch spacing */
+                padding: 10px 15px;
+            }
+
+            .navbar img {
+                width: 30px; /* Larger icons for easier tapping */
+                height: 30px;
+            }
+
+            .navbar a::before {
+                display: none; /* Hide tooltips on mobile */
+            }
+
+            .navbar br {
+                display: none;
+            }
+
+            .navbar img:hover {
+                transform: none; /* Disable hover effect on mobile */
+            }
+        }
+
+        /* Additional breakpoint for very small screens (e.g., 480px and below) */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem; /* Further reduced for very small screens */
+            }
+
+            h2 {
+                font-size: 0.9rem;
+            }
+
+            p {
+                font-size: 0.85rem;
+            }
+
+            .project-card {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .project-card img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .project-card h3 {
+                font-size: 1rem;
+            }
+
+            .project-card p {
+                font-size: 0.8rem;
+            }
+
+            .project-card .github-link img,
+            .project-card .demo-link img {
+                width: 14px;
+                height: 14px;
+            }
+
+            .navbar {
+                gap: 15px;
+                padding: 8px 12px;
+            }
+
+            .navbar img {
+                width: 25px;
+                height: 25px;
             }
         }
     </style>
@@ -332,7 +483,6 @@
                 <img src="tutor.png" alt="Chatbot Project">
                 <h3>Language Tutor</h3>
                 <p>An AI Based system for Pronunciation Assessment and Tracking of Speech Fluency Variations using the custom models which gained 50% more accuracy than the existing models like Google Web Speech API, Vosk, Whisper</p>
-                </a>
             </div>
 
             <div class="project-card">
@@ -342,7 +492,6 @@
                 <img src="face.gif" alt="E-commerce Website">
                 <h3>Face Recognition Based Attendance System</h3>
                 <p>I have created a face recognition based attendance system where the attendance will be marked if the face is recognized from the webcam or from the uploaded photo. And then the attendance will be the marked if the face gets recognized for the ceratin amount of time</p>
-                </a>
             </div>
             <div class="project-card">
                 <a href="https://github.com/Akashpaila/Hospital-management-System" class="github-link">
@@ -351,7 +500,6 @@
                 <img src="doctors-office.gif" alt="Data Visualization">
                 <h3>Hospital Management System</h3>
                 <p>Created a centralized web app where the users can book and appointement as per the disease and the doctor can accept the appointment if he is having the free slot. And the ADMIN can add the doctors if any new doctor is appointed</p>
-                </a>
             </div>
             <div class="project-card">
                 <a href="https://github.com/Akashpaila/portfolio-website" class="github-link">
@@ -360,7 +508,6 @@
                 <img src="resume.gif" alt="Portfolio Website">
                 <h3>Portfolio Website</h3>
                 <p>This website! Built with HTML, CSS, and JavaScript to showcase my skills and projects.</p>
-                </a>
             </div>
         </div>
     </div>
@@ -374,7 +521,7 @@
         <br>
         <a href="projects.html" data-tooltip="Projects"><img src="https://cdn-icons-png.flaticon.com/512/1055/1055666.png" alt="Projects"></a>
         <br>
-        <a href="Certifications.html" data-tooltip="Certificates"><img src="winner.png" alt="Certificates"></a>
+        <a href="certifications.html" data-tooltip="Certificates"><img src="winner.png" alt="Certificates"></a>
         <br>
         <a href="contact.html" data-tooltip="Contact"><img src="https://cdn-icons-png.flaticon.com/512/561/561188.png" alt="Contact"></a>
     </div>

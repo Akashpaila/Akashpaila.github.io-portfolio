@@ -12,8 +12,9 @@
             font-family: 'Poppins', sans-serif;
             background-color: #000;
             color: #fff;
-            height: 100vh;
-            overflow: auto;
+            min-height: 100vh; /* Changed to min-height to allow scrolling */
+            overflow-x: hidden; /* Prevent horizontal overflow */
+            overflow-y: auto; /* Allow vertical scrolling */
         }
 
         .container {
@@ -288,7 +289,7 @@
                 45vw 25vh 3px rgba(255, 255, 255, 0.5),
                 35vw 85vh 2px rgba(255, 255, 255, 0.4),
                 65vw 55vh 4px rgba(255, 255, 255, 0.3),
-                15vw 35vh 3px rgba(255, 2255, 255, 0.5),
+                15vw 35vh 3px rgba(255, 255, 255, 0.5),
                 85vw 65vh 2px rgba(255, 255, 255, 0.4);
             animation: moveStars 150s linear infinite;
         }
@@ -312,6 +313,161 @@
                 transform: translateY(-200vh);
             }
         }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            body {
+                min-height: 100vh;
+                height: auto;
+                padding: 20px 10px; /* Reduced padding for mobile */
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 20px;
+                padding-right: 20px; /* Adjusted padding */
+            }
+
+            h1 {
+                font-size: 2rem; /* Reduced font size for mobile */
+            }
+
+            h2 {
+                font-size: 1rem;
+            }
+
+            p {
+                font-size: 0.9rem; /* Adjusted for better readability */
+            }
+
+            .timeline {
+                margin-top: 20px;
+                padding: 10px 0;
+            }
+
+            .timeline::before {
+                left: 20px; /* Move timeline line to the left */
+                transform: none;
+            }
+
+            .timeline-item {
+                width: 100%; /* Full width */
+                left: 0 !important; /* Override odd/even positioning */
+                padding: 10px;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-right: 0;
+                margin-left: 40px; /* Space for the timeline line */
+            }
+
+            .timeline-item:nth-child(odd) .timeline-marker,
+            .timeline-item:nth-child(even) .timeline-marker {
+                left: 16px; /* Align with the timeline line */
+                right: auto;
+            }
+
+            .timeline-content {
+                padding: 15px;
+            }
+
+            .timeline-content:hover {
+                transform: none; /* Disable hover effect on mobile */
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Revert to default shadow */
+            }
+
+            .timeline-content img {
+                width: 50px; /* Slightly smaller images */
+                height: 50px;
+            }
+
+            .timeline-content h3 {
+                font-size: 1.1rem;
+            }
+
+            .timeline-content .date {
+                font-size: 0.85rem;
+            }
+
+            .timeline-content p {
+                font-size: 0.85rem;
+            }
+
+            .navbar {
+                top: auto;
+                bottom: 10px;
+                right: 50%;
+                transform: translateX(50%);
+                flex-direction: row;
+                gap: 20px; /* Increased gap for touch spacing */
+                padding: 10px 15px;
+            }
+
+            .navbar img {
+                width: 30px; /* Larger icons for easier tapping */
+                height: 30px;
+            }
+
+            .navbar a::before {
+                display: none; /* Hide tooltips on mobile */
+            }
+
+            .navbar br {
+                display: none;
+            }
+
+            .navbar img:hover {
+                transform: none; /* Disable hover effect on mobile */
+            }
+        }
+
+        /* Additional breakpoint for very small screens (e.g., 480px and below) */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem; /* Further reduced for very small screens */
+            }
+
+            h2 {
+                font-size: 0.9rem;
+            }
+
+            p {
+                font-size: 0.85rem;
+            }
+
+            .timeline-content {
+                padding: 10px;
+            }
+
+            .timeline-content img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .timeline-content h3 {
+                font-size: 1rem;
+            }
+
+            .timeline-content .date {
+                font-size: 0.8rem;
+            }
+
+            .timeline-content p {
+                font-size: 0.8rem;
+            }
+
+            .navbar {
+                gap: 15px;
+                padding: 8px 12px;
+            }
+
+            .navbar img {
+                width: 25px;
+                height: 25px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -323,7 +479,7 @@
 
     <div class="container">
         <div class="overview">
-            <h2>What i have done so far</h2>
+            <h2>What I Have Done So Far</h2>
             <h1>Work Experience</h1>
             <p>
                 Here’s a summary of my professional journey, highlighting my roles and contributions in various organizations. Each experience has helped me grow my skills in technology, problem-solving, and collaboration. Explore my work history below!
@@ -337,28 +493,18 @@
                     <div class="date">Jul 2023 - Jun 2024</div>
                     <img src="download.png" alt="IIIT Raichur Logo">
                     <h3>Website Team Member</h3>
-                    <p>Collaborated closely with a dedicated team of 10 members to develop and maintain the website, contributing significantly to its success and functionality
-                    </p>
+                    <p>Collaborated closely with a dedicated team of 10 members to develop and maintain the website, contributing significantly to its success and functionality.</p>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-marker"></div>
                 <div class="timeline-content">
-                    <div class="date">Jun 2022 - June 2023</div>
+                    <div class="date">Jun 2022 - Jun 2023</div>
                     <img src="download (1).png" alt="GDSC">
-                    <h3>Cloud Computing (GDSC Core Member) </h3>
+                    <h3>Cloud Computing (GDSC Core Member)</h3>
                     <p>Organized workshops and events to promote cloud computing technologies, engaging over 100 students in hands-on sessions using Google Cloud Platform.</p>
                 </div>
             </div>
-            <!-- <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content">
-                    <div class="date">Jun 2023 - Aug 2023</div>
-                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="TechCorp">
-                    <h3>Software Engineer Intern</h3>
-                    <p>TechCorp<br>Developed web applications using React and Node.js, improving user experience and reducing load times by 20%.</p>
-                </div>
-            </div> -->
         </div>
     </div>
 
@@ -371,7 +517,7 @@
         <br>
         <a href="projects.html" data-tooltip="Projects"><img src="https://cdn-icons-png.flaticon.com/512/1055/1055666.png" alt="Projects"></a>
         <br>
-        <a href="Certifications.html" data-tooltip="Certificates"><img src="winner.png" alt="Certificates"></a>
+        <a href="certifications.html" data-tooltip="Certificates"><img src="winner.png" alt="Certificates"></a>
         <br>
         <a href="contact.html" data-tooltip="Contact"><img src="https://cdn-icons-png.flaticon.com/512/561/561188.png" alt="Contact"></a>
     </div>
